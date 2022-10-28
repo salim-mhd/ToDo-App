@@ -14,7 +14,14 @@ function App() {
       </div>
       <div className="input">
         <input value={toDo} onChange={(e)=>setTodo(e.target.value)} type="text" placeholder="🖊️ Add item..." />
-        <i onClick={()=>setTodos([...toDos,{id:Date.now(),text: toDo,status:false}])} className="fas fa-plus"></i>
+        <i onClick={()=>{
+          if(toDo.length===0){
+            alert('🖊️   Please Enter Somthing  !!!')
+          }else{
+            setTodos([...toDos,{id:Date.now(),text: toDo,status:false}])
+            setTodo('')
+          }
+        }} className="fas fa-plus"></i>
       </div>
       <div className="todos">
         { toDos.map((obj,index)=>{
